@@ -16,6 +16,9 @@ pip install pandas
 pip install numpy
 pip install xlrd
 pip install openpyxl
+pip install matplotlib
+
+python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 ```
 ## 5，大功告成
 经过上面的安装，就可以舒适的使用vs来进行python编程啦。
