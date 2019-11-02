@@ -1673,3 +1673,25 @@ group by pi.`client_id`,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))
 ORDER by pi.`client_id`,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))
 
 
+------------------------------
+
+SELECT count(DISTINCT  `dst_phone`)
+FROM `parcel_info` 
+WHERE `created_at` >'2019-09-30 17:00:00' and `created_at` <'2019-10-31 17:00:00'
+
+and `client_id` in 
+(SELECT `client_id` from (
+SELECT `client_id`,COUNT(*) as columnss
+FROM `parcel_info` 
+WHERE `created_at` >'2019-09-30 17:00:00' and `created_at` <'2019-10-31 17:00:00'
+GROUP BY `client_id` 
+HAVING columnss>=10 and columnss<=300
+))
+
+and `parcel_category`  = 1 and `state` != 9 
+and timestampdiff(hour, created_at, finished_at) <= 24
+and `dst_phone` not in (
+SELECT `src_phone`
+    from `parcel_info` 
+)
+and `customer_type_category` = 1
