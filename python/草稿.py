@@ -1,9 +1,11 @@
 import pandas as pd
 import numpy as np
-fajianliang=pd.read_csv(r"D:\Chrome下载\export_sql_2662895\sqlResult_2662895.csv")
-fajianliang.head(10)
 import matplotlib.pyplot as plt
-import scipy as sp
-fajianliang['columnss'].plot.hist(bins=10)
+import seaborn as sns
+
+data=pd.read_csv(r"D:\Chrome下载\sqlresult_4354646.csv")
+data.head()
+data1=data['columnss']
+data1.head()
+sns.kdeplot(data1)
 plt.show()
-fajianliang?
