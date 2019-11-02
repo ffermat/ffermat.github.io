@@ -1685,7 +1685,7 @@ SELECT `client_id`,COUNT(*) as columnss
 FROM `parcel_info` 
 WHERE `created_at` >'2019-09-30 17:00:00' and `created_at` <'2019-10-31 17:00:00'
 GROUP BY `client_id` 
-HAVING columnss>=10 and columnss<=300
+HAVING columnss>=10 and columnss<=100
 ))
 
 and `parcel_category`  = 1 and `state` != 9 
