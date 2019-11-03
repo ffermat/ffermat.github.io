@@ -15,3 +15,10 @@ sns.kdeplot(data1)
 plt.show()
 
 data1.describe()
+
+import tagui as t
+t.init()
+t.url('https://www.google.com')
+t.type('q', 'decentralization[enter]')
+t.snap('page', 'results.png')
+t.close()
