@@ -11,3 +11,4 @@ end as 'job_title',
 FROM `backyard_pro`.`hr_staff_outsourcing`
 WHERE `status` =2
 and  `employment_date` >'2019-11-03'
+
