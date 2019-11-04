@@ -1,7 +1,7 @@
 SELECT 
 pi.`pno`as '运单号',
 pi.`client_id` ,
-(pi.`store_total_amount` /100) as '总运费',
+(pi.`store_parcel_amount`/100) as '运费',
 (`exhibition_weight`/1000) as '重量kg',
 case pi.`state` 
 WHEN 1 THEN '已揽收'
