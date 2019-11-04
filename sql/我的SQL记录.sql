@@ -1673,7 +1673,7 @@ group by pi.`client_id`,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))
 ORDER by pi.`client_id`,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))
 
 
-------------------------------
+#泽铭查手机号数量
 
 SELECT count(DISTINCT  `dst_phone`)
 FROM `parcel_info` 
@@ -1695,3 +1695,15 @@ SELECT `src_phone`
     from `parcel_info` 
 )
 and `customer_type_category` = 1
+
+
+
+
+#有菜单权限的人员名单
+
+SELECT rsm.`staff_info_id`,hsi.`name` ,hsi.`formal`,hjt.`job_name` ,hsi.`sys_store_id`,hsi.`sys_department_id`,sd.`name` 
+from `role_staff_menus` rsm
+LEFT JOIN `hr_staff_info` hsi on rsm.`staff_info_id` =hsi.`staff_info_id` 
+LEFT JOIN `hr_job_title`  hjt on hsi.`job_title` =hjt.`id` 
+LEFT JOIN `sys_department` sd on hsi.`sys_department_id` =sd.`id` 
+WHERE rsm.`menu_id`=74
