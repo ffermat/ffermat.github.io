@@ -69,3 +69,16 @@ and pi.`parcel_category`  = 1 and pi.`state` != 9
 and ss.`category`= 7
 group by pi.ticket_pickup_staff_info_id,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))
 
+
+
+
+#######区域经理考勤#########
+区域经理考勤
+   SELECT att.`staff_info_id` as 员工工号 ,hjt.`job_name` as 职位名,hsi.`sys_store_id`  as 所属网点,ss.`name` as 网点名, att.`stat_date` as 统计日期,att.`display_data`as 出勤情况,(att.`attendance_time`/10) as 有效出勤时间,att.`attendance_started_at` as 上班打卡时间,att.`attendance_end_at` as 下班打卡时间
+    from `attendance_data_v2` as att 
+    LEFT JOIN `hr_staff_info` as hsi on att.staff_info_id =hsi.`staff_info_id`
+    left join `sys_store` as ss on hsi.`sys_store_id` =ss.`id` 
+    left join `hr_job_title` as hjt on hsi.`job_title` =hjt.`id` 
+    where att.stat_date >="2019-10-01" and att.stat_date <="2019-10-31" 
+    and att.`staff_info_id`IN (17655,19005,17566,17174,25228,19530,20829,19011,19015,26469,19007,19754,17615)
+ORDER BY att.`staff_info_id`
