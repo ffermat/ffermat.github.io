@@ -1,4 +1,4 @@
-# 安装记录
+# installation log
 ## 1，清除所有vscode已有记录（全新安装忽略）
 ```
 If you want to reset everything, go to %userprofile%\AppData\Roaming\Code and delete the whole folder after you uninstall the VS code, then install it again.
