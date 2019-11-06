@@ -7,4 +7,4 @@ data1.head()
 data1["duty_ratio"].describe()
 data2=data1.sort_values(by=["duty_ratio"],ascending=False)
 data2
-data2.to_excel(excel_writer=r"D:\Onedrive\62，10月丢失件\look.xlsx")
+data2.to_excel(excel_writer=r"D:\Onedrive\62，10月丢失件\look.xlsx")   
