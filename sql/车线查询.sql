@@ -1,3 +1,25 @@
+SELECT COUNT(*)
+from `fleet_van_line` fvl
+LEFT JOIN `sys_store` ss on fvl.`target_id`  =ss.`id` 
+WHERE
+
+--车线未删除
+fvl.`deleted` =0
+
+--常规线路或指定日期发车的临时线路
+and
+(
+(fvl.`mode`=1)
+or
+(fvl.`mode`=2 and fvl.`plan_date`='2019-11-06')
+)
+
+--目的网点是1，2，4分类即dc&sp&shop
+and 
+ss.`category` in (1,2,4)
+
+
+
 Create Table `fleet_van_line` (
  `id` varchar COMMENT 'id主键',
  `name` varchar COMMENT '线路名称',
@@ -30,3 +52,28 @@ Create Table `fleet_van_line` (
  `version` bigint COMMENT '版本号',
  primary key (id)
 ) DISTRIBUTE BY HASH(`id`) INDEX_ALL='Y'
+
+
+
+
+
+
+SELECT fvl. `name`,fvl.`sorting_no`,fvl.`mode`,fvl.`origin_name`,fvl.`target_name`,`end_time`
+from `fleet_van_line` fvl
+LEFT JOIN `sys_store` ss on fvl.`target_id`  =ss.`id` 
+WHERE
+
+--车线未删除
+fvl.`deleted` =0
+
+--常规线路或指定日期发车的临时线路
+and
+(
+(fvl.`mode`=1)
+or
+(fvl.`mode`=2 and fvl.`plan_date`='2019-11-06')
+)
+
+--目的网点是1，2，4分类即dc&sp&shop
+and 
+ss.`category` in (1,2,4)
