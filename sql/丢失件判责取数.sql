@@ -45,3 +45,21 @@ on r.`lose_task_id`=plr.`lose_task_id`  and r.shijian=date_format(plr.`created_a
 WHERE plr.`created_at`>'2019-10-01 00:00:01'
 and plr.`created_at` <'2019-10-31 23:59:59'
 and plr.`lose_task_id`!=40533
+
+
+######从违规平台导数#############
+
+SELECT  `pno` as '运单号' ,`staff_info_id`as '惩罚人员ID', `punish_money` as '罚款',`abnormal_time`as '异常日期'
+from `abnormal_message`
+WHERE `punish_category` =7
+and `abnormal_time`>='2019-10-01'
+and `abnormal_time`<='2019-10-31'
+
+
+
+
+SELECT sum(`punish_money`) as '罚款'
+from `abnormal_message`
+WHERE `punish_category` =7
+and `abnormal_time`>='2019-10-01'
+and `abnormal_time`<='2019-10-31'

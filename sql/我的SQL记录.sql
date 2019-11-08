@@ -1723,3 +1723,21 @@ and CONVERT_TZ(pr.`routed_at`,'+00:00', '+07:00')>'2019-09-01 00:00:01'
 and CONVERT_TZ(pr.`routed_at`,'+00:00', '+07:00')<'2019-09-30 23:59:59'
 GROUP BY pr.`store_id`,pr.`store_name`
 ORDER BY  pr.`store_id`
+
+
+
+
+#梦雨要某网点所有客户按天得发货量
+
+SELECT ss.`name` as 'store_name',pi.`client_id` ,DATE(CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00')) as 'date',COUNT(*) as 'volumn'
+FROM `parcel_info` pi
+LEFT JOIN `sys_store` ss on pi.`ticket_pickup_store_id` =ss.`id` 
+WHERE 
+CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00')>'2019-09-01 00:00:01' 
+and CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00')<'2019-11-07 23:59:59'
+and pi.`ticket_pickup_store_id` in ('TH01370202','TH01370203')
+and pi.`returned`= 0
+and pi.`state` != 9 
+
+GROUP BY ss.`name`,pi.`client_id` ,DATE(CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00'))
+ORDER BY DATE(CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00')),ss.`name`
