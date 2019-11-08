@@ -1707,3 +1707,19 @@ LEFT JOIN `hr_staff_info` hsi on rsm.`staff_info_id` =hsi.`staff_info_id`
 LEFT JOIN `hr_job_title`  hjt on hsi.`job_title` =hjt.`id` 
 LEFT JOIN `sys_department` sd on hsi.`sys_department_id` =sd.`id` 
 WHERE rsm.`menu_id`=74
+
+
+
+
+---------------------------------
+1. 9月一个月的目的地到件量（平均值）
+-----------------------------------
+SELECT pr.`store_id`,pr.`store_name`,COUNT(DISTINCT pr.`pno` ) AS 'count' 
+FROM `parcel_route` pr
+LEFT JOIN `parcel_info` pi on pr.`pno` =pi.`pno` 
+where pr.`route_action`  = 'ARRIVAL_WAREHOUSE_SCAN'
+and  pr.`store_id`=pi.`dst_store_id` 
+and CONVERT_TZ(pr.`routed_at`,'+00:00', '+07:00')>'2019-09-01 00:00:01' 
+and CONVERT_TZ(pr.`routed_at`,'+00:00', '+07:00')<'2019-09-30 23:59:59'
+GROUP BY pr.`store_id`,pr.`store_name`
+ORDER BY  pr.`store_id`
