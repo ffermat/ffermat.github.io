@@ -5,7 +5,7 @@ from `attendance_data_v2` as att
 LEFT JOIN `hr_staff_info` as hsi on att.staff_info_id =hsi.`staff_info_id`
 left join `sys_store` as ss on hsi.`sys_store_id` =ss.`id` 
 left join `hr_job_title` as hjt on hsi.`job_title` =hjt.`id` 
-where att.stat_date >="2019-10-22" and att.stat_date <="2019-10-28" 
+where att.stat_date >="2019-11-01" and att.stat_date <="2019-11-07" 
 and ss.`category`=4
 ORDER BY hsi.sys_store_id
 
@@ -37,7 +37,7 @@ left join sys_store as ss on ss.id = pi.ticket_pickup_store_id
 left join staff_info si on pi.`ticket_pickup_staff_info_id` = si.`id`
 left join `staff_info_job_title` sijt on si.`job_title` =sijt.`id` 
 left join `parcel_info_version` piv on pi.`pno` =piv.`pno` 
-where pi.created_at between '2019-10-28 17:00:00' and '2019-10-31 17:00:00' and pi.returned = 0
+where pi.created_at between '2019-10-31 17:00:00' and '2019-11-07 17:00:00' and pi.returned = 0
 and pi.`parcel_category`  = 1 and pi.`state` != 9 
 and ss.`category`= 4
 group by pi.ticket_pickup_staff_info_id,DATE(CONVERT_TZ(pi.created_at,'+00:00','+07:00'))

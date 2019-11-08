@@ -19,6 +19,21 @@ data=pd.read_csv(r"D:\Onedrive\62，10月丢失件\export_sql_2672251\sqlResult_
 
 data
 
+####LAS临时处理
+staffid=pd.read_excel(r"D:\Onedrive\62，10月丢失件\staffid.xlsx")
+staffid
+hebing=pd.merge(data,staffid,how="left",left_on="惩罚人员ID",right_on="staffid")
+hebingok=hebing.dropna()
+hebingokpno=hebingok["运单号"]
+pnoquchong=hebingokpno.drop_duplicates()
+pnoquchong
+test=','.join(pnoquchong)
+test
+
+
+
+####
+
 data1=data.groupby("惩罚人员ID").sum()
 data1
 data2=data1.iloc[:,[0]]
