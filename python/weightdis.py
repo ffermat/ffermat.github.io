@@ -7,18 +7,20 @@ import matplotlib.pyplot as plt
 
 
 #导入数据
-data=pd.read_csv(r"D:\Chrome下载\export_sql_2673815\sqlResult_2673815.csv")
+data=pd.read_csv(r"D:\Chrome下载\export_sql_2675238\sqlResult_2675238.csv")
 data
 
 
+
 #下单趋势数据
-data1=pd.to_datetime(data['ordertime'],format='%Y-%m-%d %H:%M:%S')
-data2 =data1.dt.hour
-data3 =data1.dt.minute
-data4=(data2*100+(data3/60)*100)
-data4
+
+
+data4=data["weight"]
 data4=data4.dropna()
-data4.describe([0.5,0.9,0.95])
+data4.describe([0.5,0.6,0.7,0.8,0.9,0.95])
+pd.options.display.float_format = "{:.2f}".format
+
+
 
 
 #揽件趋势数据
@@ -30,7 +32,7 @@ ddata4=(ddata2*100+(ddata3/60)*100)
 ddata4
 ddata4=ddata4.dropna()
 ddata4
-ddata4.describe([0.5,0.9,0.95])
+ddata4.describe([0.5,0.6,0.7,0.8,0.9,0.95])
 
 
 ddd= pd.concat([data4, ddata4], axis=1)
