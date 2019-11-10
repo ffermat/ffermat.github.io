@@ -1,10 +1,6 @@
 import pandas as pd
-data=pd.read_csv(r"D:\Onedrive\1，常用表格\sys_store 10.26.csv")
-data.columns
-data1=data[['id', 'ancestry', 'category']]
-data1
-data2=data1.rename(columns={"id":"idd","ancestry":"asdfasdf"})
-data2
-data2.shape
-data2.info()
-data2.describe()
+import numpy as nu
+data=pd.read_csv(r"D:\Chrome下载\export_sql_2675238\sqlResult_2675238.csv")
+data[data.pno.isin(['TH27203EPRX8D','TH31013EM242J'])]
+data1=data.copy()
+list(data.weight.unique())
