@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="chart-name" content="可点击的文本">
+    <title>F2 图表组件库 - AntV</title>
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/os/rmsportal/YmDAMEQVbLJpVbKiRQVX.css" />
+    
+</head>
+<body>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+
+<script src="https://unpkg.com/@antv/f2@3.4.2/dist/f2-all.min.js"></script>
+
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
+<!-- 在 PC 上模拟 touch 事件 -->
+<script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
+
+  <div class="chart-wrapper">
+    <canvas id="mountNode"></canvas>
+  </div>
+  <script>
+  var data = [{
+    const: 'const',
+    type: '收货1次',
+    money: 60
+  }, {
+    const: 'const',
+    type: '收货2次',
+    money: 20
+  }, {
+    const: 'const',
+    type: '收货3次',
+    money: 10
+  }, {
+    const: 'const',
+    type: '收货4次',
+    money: 7
+  }, {
+    const: 'const',
+    type: '4次以上',
+    money: 3
+  }];
+  var chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data);
+  chart.coord('polar', {
+    transposed: true,
+    radius: 0.9,
+    innerRadius: 0.5
+  });
+  chart.axis(false);
+  chart.legend(false);
+  chart.tooltip(false);
+  chart.guide().html({
+    position: ['50%', '50%'],
+    html: '<div style="text-align: center;width:150px;height: 50px;">\n      <p style="font-size: 12px;color: #999;margin: 0" id="title"></p>\n      <p style="font-size: 18px;color: #343434;margin: 0;font-weight: bold;" id="money"></p>\n      </div>'
+  });
+  chart.interval().position('const*money').adjust('stack').color('type', ['#13C2C2','#1890FF',  '#2FC25B', '#FACC14','#CCD1D1']);
+  chart.pieLabel({
+    sidePadding: 30,
+    activeShape: true,
+    label1: function label1(data) {
+      return {
+        text:  data.money+'%' ,
+        fill: '#343434',
+        fontWeight: 'bold'
+      };
+    },
+    label2: function label2(data) {
+      return {
+        text: data.type,
+        fill: '#999'
+      };
+    },
+    onClick: function onClick(ev) {
+      var data = ev.data;
+      if (data) {
+        $('#title').text(data.type);
+        $('#money').text(data.money);
+      }
+    }
+  });
+  chart.render();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+when 100 then	'4W'
+when 101 then	'4WJ'
+when 200 then	'6W5.5'
+when 201 then	'6W6.5'
+when 203 then	'6W7.2'
+when 300 then	'10W'

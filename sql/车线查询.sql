@@ -77,3 +77,26 @@ or
 --目的网点是1，2，4分类即dc&sp&shop
 and 
 ss.`category` in (1,2,4)
+
+
+
+
+
+######某个网点作为始发站的所有线路##########
+
+SELECT fvp.`id` as '出车凭证编号',fvl. `name` as '线路名称',fvp.`departure_date` as '计划出车日期', fvp.`store_name` as '始发网点', fvl.`target_name` as '终点站',ss.`sorting_no` as '终点站分区',
+case fvl.`plate_type`  
+when 100 then	'4W'
+when 101 then	'4WJ'
+when 200 then	'6W5.5'
+when 201 then	'6W6.5'
+when 203 then	'6W7.2'
+when 300 then	'10W'
+end as '车型',(fvp.`price`/100) as '价格'
+FROM `fleet_van_proof`  fvp
+LEFT JOIN `fleet_van_line` fvl on fvp.`van_line_id` =fvl.`id` 
+LEFT JOIN `sys_store` ss on fvl.`target_id` =ss.`id` 
+WHERE `store_id` ='TH02020402'
+and fvp.`deleted` =0
+and fvl.`print`=1
+ORDER BY fvp.`departure_date` DESC 
