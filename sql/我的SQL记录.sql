@@ -1741,3 +1741,17 @@ and pi.`state` != 9
 
 GROUP BY ss.`name`,pi.`client_id` ,DATE(CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00'))
 ORDER BY DATE(CONVERT_TZ(pi.`created_at`, '+00:00', '+07:00')),ss.`name`
+
+
+
+
+
+
+###########花花###############
+
+SELECT ss.`id` ,ss.`name` ,ss.`manager_id`,ss.`manager_name` ,ss.`manager_phone` ,ss.`province_code`,sp.`name` ,ss.`city_code`,sc.`name` ,ss.`district_code`,sd.`name` ,ss.`detail_address`,ss.`lat` ,ss.`lng` 
+FROM `sys_store` ss 
+LEFT JOIN `sys_province` sp on sp.`code` =ss.`province_code`
+LEFT JOIN `sys_city` sc on sc.`code` =ss.`city_code` 
+LEFT JOIN `sys_district` sd on sd.`code` =ss.`district_code` 
+WHERE ss.`category` in (1,2)
