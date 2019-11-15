@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as ny
-shenqing=pd.read_csv(r"D:\Chrome下载\sqlresult_4395023.csv")
+shenqing=pd.read_csv(r"D:\Chrome下载\11.14外协员工审批.xls")
 shenqing=shenqing.drop_duplicates(subset=["store_id"])
 wangdian=pd.read_csv(r"D:\Onedrive\1，常用表格\sys_store 10.26.csv")
 wangdian1=wangdian.iloc[:,[0,6]]
@@ -13,4 +13,4 @@ jieguo=hebingshuju2[[ 'applicant', 'store_id','name', 'job_title', 'employment_d
 jieguo=jieguo.rename(columns={"name":"store_name"})
 #jieguo=jieguo.sort_values(by=["created_at"],ascending=[True])
 jieguo
-jieguo.to_excel(excel_writer=r"D:\Onedrive\0，存档10.29之前\33，外协员工需求\外协员工需求11.13_v1.xlsx")
+jieguo.to_excel(excel_writer=r"D:\Onedrive\0，存档10.29之前\33，外协员工需求\外协员工需求11.14_v1.xlsx")

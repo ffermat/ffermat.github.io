@@ -27,5 +27,4 @@ GROUP BY ss1.`id` ,ss2.`sorting_no`
 ORDER BY ss1.`id` 
 
 
-
 ####冲量表2每日明细##############
