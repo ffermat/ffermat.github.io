@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as ny
-data=pd.read_excel(r"C:\Users\JZG\Desktop\IMPORT-EXT20191116-2(1).xlsx")
+data=pd.read_excel(r"C:\Users\JZG\Desktop\IMPORT-EXT20191116-UP1118(1).xlsx")
 shortname=pd.read_csv(r"C:\Users\JZG\Desktop\网点缩写对照表.csv")
 shortnamelist=list(shortname['short_name'])
 data['线路名称']

@@ -214,7 +214,11 @@ SELSELECT
 	LEFT JOIN `parcel_route` pr on pr.`pno` =pi.
 
 	where`route_action`='ARRIVAL_WAREHOUSE_SCAN'
-	and date_format(CONVERT_TZ(pi.created_at, '+00:00', '+07:00'),'%Y-%m-%d)>="2019-05-01 00:00:00"
+and date_format(CONVERT_TZ(pi.created_at, '+00:00', '+07:00'),'%Y-%m-%d')>="2019-05-01 00:00:00")
+
+
+
+
 
 
 

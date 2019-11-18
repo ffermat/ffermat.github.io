@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as ny
-shenqing=pd.read_csv(r"D:\Chrome下载\sqlresult_4405833.csv")
-shenqing=shenqing.drop_duplicates(subset=["store_id"])
+shenqing=pd.read_csv(r"D:\Chrome下载\sqlresult_4412904.csv")
+shenqing=shenqing.drop_duplicates(["store_id","job_title"])
 wangdian=pd.read_csv(r"D:\Onedrive\1，常用表格\sys_store 10.26.csv")
 wangdian1=wangdian.iloc[:,[0,6]]
 banci=pd.read_excel(r"D:\Onedrive\1，常用表格\hr_shift.xlsx")
@@ -13,4 +13,4 @@ jieguo=hebingshuju2[[ 'applicant', 'store_id','name', 'job_title', 'employment_d
 jieguo=jieguo.rename(columns={"name":"store_name"})
 #jieguo=jieguo.sort_values(by=["created_at"],ascending=[True])
 jieguo
-jieguo.to_excel(excel_writer=r"D:\Onedrive\0，存档10.29之前\33，外协员工需求\外协员工需求11.15_v1.xlsx")
+jieguo.to_excel(excel_writer=r"D:\Onedrive\0，存档10.29之前\33，外协员工需求\外协员工需求11.18_v1.xlsx")
